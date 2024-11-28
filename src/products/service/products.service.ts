@@ -47,9 +47,9 @@ export class ProductsService {
   async findByCampus(campus: string): Promise<Product[]> {
     return this.productRepository
       .createQueryBuilder('product')
-      .leftJoinAndSelect('product.student', 'student') // Relación con estudiantes
-      .where('student.campus = :campus', { campus }) // Filtrar por campus
-      .andWhere('product.status = true') // Solo productos activos
+      .leftJoinAndSelect('product.student', 'student')
+      .where('student.campus = :campus', { campus })
+      .andWhere('product.status = true')
       .select([
         'product.id',
         'product.name',

@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { Student } from '../../students/entity/student.entity';
+import { Report } from '../../reports/entity/report.entity';
 
 @Entity('products')
 export class Product {
@@ -27,6 +28,9 @@ export class Product {
   @ManyToOne(() => Student, (student) => student.products, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'studentId' })
   student: Student;
+
+  @OneToMany(() => Report, (report) => report.product)
+  reports: Report[];
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;

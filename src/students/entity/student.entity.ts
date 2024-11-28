@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { Product } from '../../products/entity/product.entity';
+import { Report } from '../../reports/entity/report.entity';
 
 @Entity('students')
 export class Student {
@@ -26,6 +27,9 @@ export class Student {
 
   @OneToMany(() => Product, (product) => product.student)
   products: Product[];
+
+  @OneToMany(() => Report, (report) => report.reporter)
+  reports: Report[];
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;

@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    title Detalles de tu Compra
+  body(style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f9f9f9;")
+    h1(style="color: #4CAF50;") ¡Gracias por tu compra!
+    p Hola #{buyerName}, gracias por tu compra en UMarketplace.
+    p Aquí están los detalles de tu transacción:
+    table(style="width: 100%; border-collapse: collapse;")
+      thead
+        tr
+          th(style="border: 1px solid #ddd; padding: 8px;") Producto
+          th(style="border: 1px solid #ddd; padding: 8px;") Precio
+          th(style="border: 1px solid #ddd; padding: 8px;") Vendedor
+          th(style="border: 1px solid #ddd; padding: 8px;") Contacto
+      tbody
+        each item in cartItems
+          tr
+            td(style="border: 1px solid #ddd; padding: 8px;") #{item.productName}
+            td(style="border: 1px solid #ddd; padding: 8px;") $#{item.productPrice}
+            td(style="border: 1px solid #ddd; padding: 8px;") #{item.sellerName}
+            td(style="border: 1px solid #ddd; padding: 8px;") #{item.sellerContact}
+    p Si tienes alguna pregunta, no dudes en contactarnos.
+    p(style="color: #888; font-size: 12px;") Este es un mensaje automático. Por favor, no respondas a este correo.
